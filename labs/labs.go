@@ -61,4 +61,16 @@ func(l Labs) ShowLab4() {
 	compareFunc = compareFuncs.DESC
 	fmt.Println("по убыванию")
 	sorts.TestSort(sort, compareFunc)
+
+
+	fmt.Println()
+	fmt.Println("merge sort stack")
+	sort, _ = sorts.NewSort(sorts.MergeSortStack)
+	compareFunc = compareFuncs.ASC
+	fmt.Println("по возрастанию:")
+	sorts.TestSort(sort, compareFunc)
+
+	compareFunc = compareFuncs.DESC
+	fmt.Println("по убыванию")
+	sorts.TestSort(sort, compareFunc)
 }

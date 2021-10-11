@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-
-
 func TestSort(t *testing.T) {
 	testArray := []int{5, 10, 8, 1, 4, 2, 7, 3, 9, 6}
 

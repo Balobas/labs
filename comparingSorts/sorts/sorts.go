@@ -6,6 +6,7 @@ import (
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/bubbleSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/insertionSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSort"
+	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSortStack"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/selectionSort"
 	"fmt"
 	"github.com/pkg/errors"
@@ -18,6 +19,7 @@ const (
 	SelectionSort = SortType("selection sort")
 	InsertionSort = SortType("insertion sort")
 	MergeSort = SortType("merge sort")
+	MergeSortStack = SortType("merge sort stack")
 )
 
 func NewSort(sortType SortType) (sorter.Sorter, error) {
@@ -30,6 +32,8 @@ func NewSort(sortType SortType) (sorter.Sorter, error) {
 		return newInsertionSort(), nil
 	case MergeSort:
 		return newMergeSort(), nil
+	case MergeSortStack:
+		return newMergeSortStack(), nil
 	}
 	return nil, errors.Errorf("invalid sort type %s", sortType)
 }
@@ -48,6 +52,10 @@ func newInsertionSort() sorter.Sorter {
 
 func newMergeSort() sorter.Sorter {
 	return mergeSort.MergeSort{}
+}
+
+func newMergeSortStack() sorter.Sorter {
+	return mergeSortStack.MergeSortStack{}
 }
 
 func TestSort(sorter sorter.Sorter, compareFunc compareFuncs.CompareFunc) {
