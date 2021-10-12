@@ -112,14 +112,14 @@ func(l Labs) ShowLab6() {
 	sorts.TestSort(sort, compareFunc)
 
 
-	//fmt.Println()
-	//fmt.Println("quick sort Hoare stack")
-	//sort, _ = sorts.NewSort(sorts.QuickSortHoareStack)
-	//compareFunc = compareFuncs.ASC
-	//fmt.Println("по возрастанию:")
-	//sorts.TestSort(sort, compareFunc)
-	//
-	//compareFunc = compareFuncs.DESC
-	//fmt.Println("по убыванию")
-	//sorts.TestSort(sort, compareFunc)
+	fmt.Println()
+	fmt.Println("quick sort Hoare stack")
+	sort, _ = sorts.NewSort(sorts.QuickSortHoareStack)
+	compareFunc = compareFuncs.ASC
+	fmt.Println("по возрастанию:")
+	sorts.TestSort(sort, compareFunc)
+
+	compareFunc = compareFuncs.DESC
+	fmt.Println("по убыванию")
+	sorts.TestSort(sort, compareFunc)
 }
