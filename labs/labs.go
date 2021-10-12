@@ -3,6 +3,7 @@ package labs
 import (
 	"MagistraturaLabsASD/labs/comparingSorts/compareFuncs"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts"
+	"MagistraturaLabsASD/labs/lab9"
 	"fmt"
 )
 
@@ -17,6 +18,7 @@ func(l Labs) ShowAllLabs() {
 	l.ShowLab6()
 	l.ShowLab7()
 	l.ShowLab8()
+	l.ShowLab9()
 }
 
 func(l Labs) ShowLab1() {
@@ -149,4 +151,8 @@ func(l Labs) ShowLab8() {
 	compareFunc = compareFuncs.DESC
 	fmt.Println("по убыванию")
 	sorts.TestSort(sort, compareFunc)
+}
+
+func(l Labs) ShowLab9() {
+	lab9.FirstN(25)
 }
