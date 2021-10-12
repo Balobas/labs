@@ -62,6 +62,7 @@ func Partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
 
 	var l, r []int
 	p := len(arr) / 2
+	pE := arr[p]
 
 	SortThree(&arr[0], &arr[p], &arr[len(arr) - 1], compareFunc)
 
@@ -82,7 +83,7 @@ func Partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
 		i++
 	}
 
-	arr[i] = arr[p]
+	arr[i] = pE
 	p = i
 	i++
 

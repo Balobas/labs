@@ -7,6 +7,7 @@ import (
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/insertionSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSortStack"
+	"MagistraturaLabsASD/labs/comparingSorts/sorts/quickSortHoare"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/quickSortMedian"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/quickSortMedianStack"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/selectionSort"
@@ -24,6 +25,7 @@ const (
 	MergeSortStack = SortType("merge sort stack")
 	QuickSortMedian = SortType("quick sort median")
 	QuickSortMedianStack = SortType("quick sort median stack")
+	QuickSortHoare = SortType("quick sort Hoare")
 )
 
 func NewSort(sortType SortType) (sorter.Sorter, error) {
@@ -42,6 +44,8 @@ func NewSort(sortType SortType) (sorter.Sorter, error) {
 		return newQuickSortMedian(), nil
 	case QuickSortMedianStack:
 		return newQuickSortMedianStack(), nil
+	case QuickSortHoare:
+		return newQuickSortHoare(), nil
 	}
 	return nil, errors.Errorf("invalid sort type %s", sortType)
 }
@@ -72,6 +76,10 @@ func newQuickSortMedian() sorter.Sorter {
 
 func newQuickSortMedianStack() sorter.Sorter {
 	return quickSortMedianStack.QuickSortMedianStack{}
+}
+
+func newQuickSortHoare() sorter.Sorter {
+	return quickSortHoare.QuickSortHoare{}
 }
 
 func TestSort(sorter sorter.Sorter, compareFunc compareFuncs.CompareFunc) {
