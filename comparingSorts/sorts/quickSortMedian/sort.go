@@ -14,7 +14,7 @@ func(qsm QuickSortMedian) Sort(array []int, compareFunc compareFuncs.CompareFunc
 
 func reqSort(array []int, compareFunc compareFuncs.CompareFunc) {
 	if len(array) > 1 {
-		m := partition(array, compareFunc)
+		m := Partition(array, compareFunc)
 
 		reqSort(array[:m], compareFunc)
 		reqSort(array[m:], compareFunc)
@@ -26,7 +26,7 @@ func partitionBad(arr []int, compareFunc compareFuncs.CompareFunc) int {
 
 	pivotI := len(arr) / 2
 
-	sortThree(&arr[0], &arr[pivotI], &arr[len(arr) - 1], compareFunc)
+	SortThree(&arr[0], &arr[pivotI], &arr[len(arr) - 1], compareFunc)
 
 	pivot := arr[pivotI]
 	l, r := 0, len(arr) - 1
@@ -50,7 +50,7 @@ func partitionBad(arr []int, compareFunc compareFuncs.CompareFunc) int {
 	}
 }
 
-func partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
+func Partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
 	if len(arr) == 2 {
 		if compareFunc(arr[0], arr[1]) {
 			return 1
@@ -63,7 +63,7 @@ func partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
 	var l, r []int
 	p := len(arr) / 2
 
-	sortThree(&arr[0], &arr[p], &arr[len(arr) - 1], compareFunc)
+	SortThree(&arr[0], &arr[p], &arr[len(arr) - 1], compareFunc)
 
 	for i := 0; i < len(arr); i++ {
 		if i == p {
@@ -94,7 +94,7 @@ func partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
 	return p
 }
 
-func sortThree(a, b, c *int, compareFunc compareFuncs.CompareFunc) {
+func SortThree(a, b, c *int, compareFunc compareFuncs.CompareFunc) {
 	if !compareFunc(*a, *c) {
 		swap(a, c)
 	}

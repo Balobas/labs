@@ -88,14 +88,14 @@ func(l Labs) ShowLab5() {
 	sorts.TestSort(sort, compareFunc)
 
 
-	//fmt.Println()
-	//fmt.Println("quick sort median stack")
-	//sort, _ = sorts.NewSort(sorts.MergeSortStack)
-	//compareFunc = compareFuncs.ASC
-	//fmt.Println("по возрастанию:")
-	//sorts.TestSort(sort, compareFunc)
-	//
-	//compareFunc = compareFuncs.DESC
-	//fmt.Println("по убыванию")
-	//sorts.TestSort(sort, compareFunc)
+	fmt.Println()
+	fmt.Println("quick sort median stack")
+	sort, _ = sorts.NewSort(sorts.QuickSortMedianStack)
+	compareFunc = compareFuncs.ASC
+	fmt.Println("по возрастанию:")
+	sorts.TestSort(sort, compareFunc)
+
+	compareFunc = compareFuncs.DESC
+	fmt.Println("по убыванию")
+	sorts.TestSort(sort, compareFunc)
 }
