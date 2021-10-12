@@ -2,14 +2,14 @@ package quickSortHoareStack
 
 import (
 	"MagistraturaLabsASD/labs/comparingSorts/compareFuncs"
-	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSortStack"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/quickSortHoare"
+	"MagistraturaLabsASD/labs/structs"
 )
 
 type QuickSortHoareStack struct {}
 
 func(qshs QuickSortHoareStack) Sort(array []int, compareFunc compareFuncs.CompareFunc) []int {
-	stack := mergeSortStack.NewStack()
+	stack := structs.NewStack()
 
 	arr := array
 

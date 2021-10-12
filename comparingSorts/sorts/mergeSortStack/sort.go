@@ -2,36 +2,15 @@ package mergeSortStack
 
 import (
 	"MagistraturaLabsASD/labs/comparingSorts/compareFuncs"
+	"MagistraturaLabsASD/labs/structs"
 )
 
 type MergeSortStack struct {}
 
-type Stack struct {
-	data [][]int
-}
-
-func NewStack() *Stack {
-	return &Stack{[][]int{}}
-}
-
-func(s *Stack) Push(elem []int) {
-	s.data = append(s.data, elem)
-}
-
-func(s *Stack) Pop() []int {
-	res := s.data[0]
-	s.data = s.data[1:]
-	return res
-}
-
-func(s *Stack) Size() int {
-	return len(s.data)
-}
-
 
 func(mss MergeSortStack) Sort(array []int, compareFunc compareFuncs.CompareFunc) []int {
-	stack := NewStack()
-	finalStack := NewStack()
+	stack := structs.NewStack()
+	finalStack := structs.NewStack()
 
 	stack.Push(array)
 	var current []int

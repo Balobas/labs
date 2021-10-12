@@ -14,6 +14,9 @@ func(l Labs) ShowAllLabs() {
 	l.ShowLab3()
 	l.ShowLab4()
 	l.ShowLab5()
+	l.ShowLab6()
+	l.ShowLab7()
+	l.ShowLab8()
 }
 
 func(l Labs) ShowLab1() {

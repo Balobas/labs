@@ -2,14 +2,14 @@ package quickSortMedianStack
 
 import (
 	"MagistraturaLabsASD/labs/comparingSorts/compareFuncs"
-	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSortStack"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/quickSortMedian"
+	"MagistraturaLabsASD/labs/structs"
 )
 
 type QuickSortMedianStack struct {}
 
 func(qsms QuickSortMedianStack) Sort(array []int, compareFunc compareFuncs.CompareFunc) []int {
-	stack := mergeSortStack.NewStack()
+	stack := structs.NewStack()
 	arr := array
 
 	stack.Push(arr)
@@ -17,7 +17,7 @@ func(qsms QuickSortMedianStack) Sort(array []int, compareFunc compareFuncs.Compa
 	for stack.Size() > 0 {
 		a := stack.Pop()
 
-		if len(a) == 1 {
+		if len(a) <= 1 {
 			continue
 		}
 
