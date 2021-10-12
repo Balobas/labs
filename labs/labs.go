@@ -123,3 +123,16 @@ func(l Labs) ShowLab6() {
 	fmt.Println("по убыванию")
 	sorts.TestSort(sort, compareFunc)
 }
+
+func(l Labs) ShowLab7() {
+	fmt.Println("Lab 6: Shell sort")
+	sort, _ := sorts.NewSort(sorts.ShellSort)
+	compareFunc := compareFuncs.ASC
+	fmt.Println("по возрастанию:")
+	sorts.TestSort(sort, compareFunc)
+
+	compareFunc = compareFuncs.DESC
+	fmt.Println("по убыванию")
+	sorts.TestSort(sort, compareFunc)
+
+}

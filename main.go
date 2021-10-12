@@ -5,5 +5,5 @@ import "MagistraturaLabsASD/labs/labs"
 func main() {
 	l := labs.Labs{}
 
-	l.ShowLab6()
+	l.ShowLab7()
 }
