@@ -13,6 +13,7 @@ func(l Labs) ShowAllLabs() {
 	l.ShowLab2()
 	l.ShowLab3()
 	l.ShowLab4()
+	l.ShowLab5()
 }
 
 func(l Labs) ShowLab1() {
@@ -52,7 +53,7 @@ func(l Labs) ShowLab3() {
 }
 
 func(l Labs) ShowLab4() {
-	fmt.Println("Lab 4: merge sort")
+	fmt.Println("Lab 4: merge sort recursive")
 	sort, _ := sorts.NewSort(sorts.MergeSort)
 	compareFunc := compareFuncs.ASC
 	fmt.Println("по возрастанию:")
@@ -73,4 +74,28 @@ func(l Labs) ShowLab4() {
 	compareFunc = compareFuncs.DESC
 	fmt.Println("по убыванию")
 	sorts.TestSort(sort, compareFunc)
+}
+
+func(l Labs) ShowLab5() {
+	fmt.Println("Lab 5: quick sort median recursive")
+	sort, _ := sorts.NewSort(sorts.QuickSortMedian)
+	compareFunc := compareFuncs.ASC
+	fmt.Println("по возрастанию:")
+	sorts.TestSort(sort, compareFunc)
+
+	compareFunc = compareFuncs.DESC
+	fmt.Println("по убыванию")
+	sorts.TestSort(sort, compareFunc)
+
+
+	//fmt.Println()
+	//fmt.Println("quick sort median stack")
+	//sort, _ = sorts.NewSort(sorts.MergeSortStack)
+	//compareFunc = compareFuncs.ASC
+	//fmt.Println("по возрастанию:")
+	//sorts.TestSort(sort, compareFunc)
+	//
+	//compareFunc = compareFuncs.DESC
+	//fmt.Println("по убыванию")
+	//sorts.TestSort(sort, compareFunc)
 }
