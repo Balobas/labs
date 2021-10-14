@@ -19,6 +19,8 @@ func(l Labs) ShowAllLabs() {
 	l.ShowLab7()
 	l.ShowLab8()
 	l.ShowLab9()
+
+	l.ShowLab11()
 }
 
 func(l Labs) ShowLab1() {
@@ -155,4 +157,16 @@ func(l Labs) ShowLab8() {
 
 func(l Labs) ShowLab9() {
 	lab9.FirstN(25)
+}
+
+func(l Labs) ShowLab11() {
+	fmt.Println("Lab 11: heap sort")
+	sort, _ := sorts.NewSort(sorts.HeapSort)
+	compareFunc := compareFuncs.ASC
+	fmt.Println("по возрастанию:")
+	sorts.TestSort(sort, compareFunc)
+
+	compareFunc = compareFuncs.DESC
+	fmt.Println("по убыванию")
+	sorts.TestSort(sort, compareFunc)
 }

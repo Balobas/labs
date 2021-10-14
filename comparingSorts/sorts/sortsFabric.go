@@ -5,6 +5,7 @@ import (
 	"MagistraturaLabsASD/labs/comparingSorts/sorter"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/bubbleSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/countingSort"
+	"MagistraturaLabsASD/labs/comparingSorts/sorts/heapSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/insertionSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSort"
 	"MagistraturaLabsASD/labs/comparingSorts/sorts/mergeSortStack"
@@ -32,6 +33,7 @@ const (
 	QuickSortHoareStack = SortType("quick sort Hoare stack")
 	ShellSort = SortType("Shell sort")
 	CountingSort = SortType("counting sort")
+	HeapSort = SortType("heap sort")
 )
 
 func NewSort(sortType SortType) (sorter.Sorter, error) {
@@ -58,8 +60,11 @@ func NewSort(sortType SortType) (sorter.Sorter, error) {
 		return newShellSort(), nil
 	case CountingSort:
 		return newCountingSort(), nil
+	case HeapSort:
+		return newHeapSort(), nil
+	default:
+		return nil, errors.Errorf("invalid sort type %s", sortType)
 	}
-	return nil, errors.Errorf("invalid sort type %s", sortType)
 }
 
 func newBubbleSorter() sorter.Sorter {
@@ -106,21 +111,34 @@ func newCountingSort() sorter.Sorter {
 	return countingSort.CountingSort{}
 }
 
-func TestSort(sorter sorter.Sorter, compareFunc compareFuncs.CompareFunc) {
-	testArray := []int{5, 10, 8, 1, 4, 2, 7, 3, 9, 6}
+func newHeapSort() sorter.Sorter {
+	return heapSort.HeapSort{}
+}
 
-	sortedArray := sorter.Sort(testArray, compareFunc)
-
-	for i := 0; i < len(testArray) - 1; i++ {
-		if !compareFunc(sortedArray[i], sortedArray[i+1]) {
-			fmt.Println(sortedArray[i], sortedArray[i+1])
-			fmt.Println("unsorted")
-			fmt.Println(sortedArray)
-			fmt.Println("FAIL")
-			return
-		}
+var (
+	testArrays = [][]int{
+		{5, 10, 1, 4, 7, 9, 12, 3, 56},
+		{1, 2, 3, 4, 5, 6, 7},
+		{8, 1, 7, 3, 5, 9, 2, 4, 6},
 	}
+)
 
-	fmt.Println(sortedArray)
-	fmt.Println("PASS: sorted\n")
+func TestSort(sorter sorter.Sorter, compareFunc compareFuncs.CompareFunc) {
+
+	for _, array := range testArrays {
+		sortedArray := sorter.Sort(array, compareFunc)
+
+		for i := 0; i < len(array) - 1; i++ {
+			if !compareFunc(sortedArray[i], sortedArray[i+1]) {
+				fmt.Println(sortedArray[i], sortedArray[i+1])
+				fmt.Println("unsorted")
+				fmt.Println(sortedArray)
+				fmt.Println("FAIL")
+				return
+			}
+		}
+
+		fmt.Println(sortedArray)
+		fmt.Println("PASS: sorted\n")
+	}
 }
