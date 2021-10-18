@@ -72,3 +72,4 @@ func(s *Stack) Pop() int {
 func(s *Stack) Size() int {
 	return len(s.data)
 }
+

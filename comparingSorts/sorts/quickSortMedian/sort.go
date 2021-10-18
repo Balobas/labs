@@ -21,8 +21,7 @@ func reqSort(array []int, compareFunc compareFuncs.CompareFunc) {
 	}
 }
 
-// при двух динаковых элементах в массиве может выбрать их значение за pivot тогда зависнет
-func partitionBad(arr []int, compareFunc compareFuncs.CompareFunc) int {
+func Partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
 
 	pivotI := len(arr) / 2
 
@@ -41,58 +40,12 @@ func partitionBad(arr []int, compareFunc compareFuncs.CompareFunc) int {
 			r--
 		}
 
-
 		if l >= r {
 			return r
 		}
 
 		swap(&arr[l], &arr[r])
 	}
-}
-
-func Partition(arr []int, compareFunc compareFuncs.CompareFunc) int {
-	if len(arr) == 2 {
-		if compareFunc(arr[0], arr[1]) {
-			return 1
-		} else {
-			swap(&arr[0], &arr[1])
-			return 1
-		}
-	}
-
-	var l, r []int
-	p := len(arr) / 2
-	pE := arr[p]
-
-	SortThree(&arr[0], &arr[p], &arr[len(arr) - 1], compareFunc)
-
-	for i := 0; i < len(arr); i++ {
-		if i == p {
-			continue
-		}
-		if compareFunc(arr[i], arr[p]) {
-			l = append(l, arr[i])
-		} else {
-			r = append(r, arr[i])
-		}
-	}
-
-	i := 0
-	for j := 0; j < len(l); j++ {
-		arr[i] = l[j]
-		i++
-	}
-
-	arr[i] = pE
-	p = i
-	i++
-
-	for k := 0; k < len(r); k++ {
-		arr[i] = r[k]
-		i++
-	}
-
-	return p
 }
 
 func SortThree(a, b, c *int, compareFunc compareFuncs.CompareFunc) {

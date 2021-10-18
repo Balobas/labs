@@ -28,7 +28,7 @@ func heapify(array []int, compareFunc compareFuncs.CompareFunc) {
 }
 
 func(hs HeapSort) Sort(array []int, compareFunc compareFuncs.CompareFunc) []int {
-	for i := len(array) / 2 + 1; i >= 0; i-- {
+	for i := len(array) / 2 ; i >= 0; i-- {
 		heapify(array[i:], compareFunc)
 	}
 
