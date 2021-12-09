@@ -5,11 +5,12 @@ import "MagistraturaLabsASD/labs/comparingSorts/compareFuncs"
 type Heap struct {
 	data []int
 	size int
+	n int
 	compareFunc compareFuncs.CompareFunc
 }
 
 func NewHeap(n int, compareFunc compareFuncs.CompareFunc) *Heap {
-	return &Heap{make([]int, n*2), 0, compareFunc}
+	return &Heap{make([]int, n*2), 0, n, compareFunc}
 }
 
 func(h *Heap) Push(elem int) {
@@ -25,13 +26,18 @@ func(h *Heap) Push(elem int) {
 
 func(h *Heap) Pop() int {
 	if h.size == 1 {
-
+		res := h.data[0]
+		h.data = make([]int, h.n * 2)
+		h.size--
+		return res
 	}
 	for i := h.size / 2 + 1; i >= 0; i-- {
 		h.heapify(i)
 	}
-
-	return 2
+	res := h.data[0]
+	h.data = h.data[1:]
+	h.size--
+	return res
 }
 
 func(h *Heap) heapify(i int) {
